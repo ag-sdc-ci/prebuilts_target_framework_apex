@@ -1,0 +1,46 @@
+package {
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+aidl_interface {
+    name: "apex_aidl_interface",
+    unstable: true,
+    srcs: [
+        "aidl/android/apex/ApexInfo.aidl",
+        "aidl/android/apex/ApexInfoList.aidl",
+        "aidl/android/apex/ApexSessionInfo.aidl",
+        "aidl/android/apex/ApexSessionParams.aidl",
+        "aidl/android/apex/ApexTrustedKey.aidl",
+        "aidl/android/apex/CompressedApexInfo.aidl",
+        "aidl/android/apex/CompressedApexInfoList.aidl",
+        "aidl/android/apex/IApexService.aidl",
+    ],
+    local_include_dir: "aidl",
+    backend: {
+        java: {
+            sdk_version: "28",
+        },
+        ndk: {
+            enabled: false,
+        },
+    },
+}
+
+xsd_config {
+    name: "apex-info-list",
+    srcs: ["ApexInfoList.xsd"],
+    package_name: "com.android.apex",
+    api_dir: "apex-info-list-api",
+    gen_writer: true,
+    root_elements: ["apex-info-list"],
+}
+
+xsd_config {
+    name: "apex-info-list-tinyxml",
+    srcs: ["ApexInfoList.xsd"],
+    package_name: "com.android.apex",
+    api_dir: "apex-info-list-api",
+    gen_writer: true,
+    tinyxml: true,
+    root_elements: ["apex-info-list"],
+}

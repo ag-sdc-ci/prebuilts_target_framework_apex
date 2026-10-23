@@ -35,5 +35,3 @@ soong_config_module_type {
         "min_sdk_version",
     ],
 }
-
-build = ["apexd/Android.bp"]
